@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Details - CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CampusHub</h1>
+                <p class="tagline">Your Gateway to Higher Education in Kazakhstan</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Universities</a></li>
+                <li><a href="virtual-tour.html">Virtual Tour</a></li>
+                <li><a href="compare.html">Compare</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- University Header -->
+    <section class="university-header">
+        <div class="container">
+            <div class="university-logo" id="universityLogo">
+                <div class="logo-placeholder">Logo</div>
+            </div>
+            <div class="university-info-header">
+                <h1 id="universityName">University Name</h1>
+                <div class="university-meta">
+                    <span class="location" id="universityCity">City</span>
+                    <span class="rating" id="universityRating">★★★★☆ 4.5</span>
+                    <span class="type" id="universityType">Public</span>
+                </div>
+                <div class="university-actions">
+                    <button class="btn btn-primary" onclick="addToCompare()">Add to Compare</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='virtual-tour.html'">Virtual Tour</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='register.html'">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Details Tabs -->
+    <section class="university-details">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="programs">Programs</button>
+                <button class="tab-btn" data-tab="admission">Admission</button>
+                <button class="tab-btn" data-tab="international">International</button>
+                <button class="tab-btn" data-tab="contacts">Contacts</button>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="detail-section">
+                    <h2>About the University</h2>
+                    <div id="universityHistory" class="content-box">
+                        <h3>History</h3>
+                        <p>Founded in [YEAR], this university has been a cornerstone of higher education in Kazakhstan...</p>
+                    </div>
+                    <div id="universityMission" class="content-box">
+                        <h3>Mission & Goals</h3>
+                        <p>Our mission is to provide world-class education and prepare students for successful careers...</p>
+                    </div>
+                    <div id="universityAchievements" class="content-box">
+                        <h3>Achievements</h3>
+                        <ul>
+                            <li>Ranked among top 10 universities in Kazakhstan</li>
+                            <li>International accreditation</li>
+                            <li>Strong industry partnerships</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2>Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statStudents">15,000+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statFaculties">12</div>
+                            <div class="stat-label">Faculties</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statPrograms">50+</div>
+                            <div class="stat-label">Programs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statInternational">500+</div>
+                            <div class="stat-label">International Students</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2>Leadership</h2>
+                    <div id="universityLeadership" class="content-box">
+                        <p><strong>Rector:</strong> [Name]</p>
+                        <p><strong>Vice-Rectors:</strong> [Names]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programs Tab -->
+            <div class="tab-content" id="programs">
+                <div class="detail-section">
+                    <h2>Academic Programs</h2>
+                    <div class="programs-filter">
+                        <button class="filter-chip active" data-level="all">All</button>
+                        <button class="filter-chip" data-level="bachelor">Bachelor's</button>
+                        <button class="filter-chip" data-level="master">Master's</button>
+                        <button class="filter-chip" data-level="phd">PhD</button>
+                        <button class="filter-chip" data-level="college">College</button>
+                    </div>
+                    <div id="programsList" class="programs-list">
+                        <!-- Programs will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admission Tab -->
+            <div class="tab-content" id="admission">
+                <div class="detail-section">
+                    <h2>Admission Requirements</h2>
+                    <div class="content-box">
+                        <h3>For Kazakhstani Students</h3>
+                        <ul>
+                            <li>UNT (Unified National Test) certificate</li>
+                            <li>High school diploma</li>
+                            <li>Medical certificate</li>
+                            <li>Identity document</li>
+                            <li>Photos</li>
+                        </ul>
+                    </div>
+                    <div class="content-box">
+                        <h3>Application Process</h3>
+                        <ol>
+                            <li>Submit online application</li>
+                            <li>Upload required documents</li>
+                            <li>Pass entrance exams (if required)</li>
+                            <li>Interview (for some programs)</li>
+                            <li>Receive admission decision</li>
+                        </ol>
+                    </div>
+                    <div class="content-box">
+                        <h3>Important Deadlines</h3>
+                        <div class="deadline-box">
+                            <p><strong>Application Deadline:</strong> <span id="deadlineDate">June 15, 2024</span></p>
+                            <p><strong>Document Submission:</strong> <span id="docDeadline">June 20, 2024</span></p>
+                            <p><strong>Entrance Exams:</strong> <span id="examDate">July 1-10, 2024</span></p>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <h3>Tuition Fees & Scholarships</h3>
+                        <div class="pricing-box">
+                            <p><strong>Annual Tuition:</strong> <span id="tuitionFee">800,000 - 1,200,000 KZT</span></p>
+                            <p><strong>Available Scholarships:</strong></p>
+                            <ul>
+                                <li>Academic Excellence Scholarship (up to 100% tuition)</li>
+                                <li>Need-based Financial Aid</li>
+                                <li>Government Grants</li>
+                                <li>International Student Scholarships</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- International Tab -->
+            <div class="tab-content" id="international">
+                <div class="detail-section">
+                    <h2>International Cooperation</h2>
+                    <div class="content-box">
+                        <h3>Exchange Programs</h3>
+                        <p>We have partnerships with universities in:</p>
+                        <ul>
+                            <li>Europe (Erasmus+ program)</li>
+                            <li>United States</li>
+                            <li>Asia-Pacific region</li>
+                            <li>CIS countries</li>
+                        </ul>
+                    </div>
+                    <div class="content-box">
+                        <h3>For International Students</h3>
+                        <h4>Language Requirements</h4>
+                        <ul>
+                            <li>Kazakh/Russian programs: Language proficiency test</li>
+                            <li>English programs: IELTS 6.0+ or TOEFL 80+</li>
+                        </ul>
+                        <h4>Visa Information</h4>
+                        <p>International students need a student visa. Our international office provides full support for visa applications.</p>
+                        <h4>Support Services</h4>
+                        <ul>
+                            <li>Airport pickup</li>
+                            <li>Accommodation assistance</li>
+                            <li>Orientation program</li>
+                            <li>Language courses</li>
+                            <li>Cultural integration support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts Tab -->
+            <div class="tab-content" id="contacts">
+                <div class="detail-section">
+                    <h2>Contact Information</h2>
+                    <div class="contacts-grid">
+                        <div class="contact-card">
+                            <h3>Main Office</h3>
+                            <p><strong>Address:</strong> <span id="contactAddress">[Address]</span></p>
+                            <p><strong>Phone:</strong> <span id="contactPhone">+7 (XXX) XXX-XX-XX</span></p>
+                            <p><strong>Email:</strong> <span id="contactEmail">info@university.kz</span></p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>Admission Office</h3>
+                            <p><strong>Phone:</strong> <span id="admissionPhone">+7 (XXX) XXX-XX-XX</span></p>
+                            <p><strong>Email:</strong> <span id="admissionEmail">admission@university.kz</span></p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>International Office</h3>
+                            <p><strong>Phone:</strong> <span id="internationalPhone">+7 (XXX) XXX-XX-XX</span></p>
+                            <p><strong>Email:</strong> <span id="internationalEmail">international@university.kz</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusHub</h3>
+                    <p>The Best University Catalog Platform of the Year</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Universities</a></li>
+                        <li><a href="virtual-tour.html">Virtual Tour</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load university data from URL parameter
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const universityId = urlParams.get('id') || '1';
+            loadUniversityDetails(universityId);
+        });
+    </script>
+</body>
+</html>
+
+

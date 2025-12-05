@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            padding: 2rem 0;
+        }
+        .admin-header {
+            background: linear-gradient(135deg, var(--dark-color), #2A2B3F);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        .stat-box-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .applications-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .applications-table th {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .applications-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .applications-table tr:hover {
+            background-color: var(--light-bg);
+        }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .status-new {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+        .status-contacted {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        .status-completed {
+            background-color: #4CAF50;
+            color: var(--white);
+        }
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        .btn-view {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+        .btn-contact {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CampusHub Admin</h1>
+                <p class="tagline">Administrator Dashboard</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">View Website</a></li>
+                <li><a href="admin.html" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Header -->
+    <section class="admin-header">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <p>Manage applications, inquiries, and user registrations</p>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-container">
+        <div class="container">
+            <!-- Statistics -->
+            <div class="admin-stats">
+                <div class="stat-box">
+                    <div class="stat-box-number" id="totalApplications">0</div>
+                    <div>Total Applications</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-number" id="newApplications">0</div>
+                    <div>New Applications</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-number" id="totalUsers">0</div>
+                    <div>Registered Users</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-number" id="contacted">0</div>
+                    <div>Contacted</div>
+                </div>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <select id="filterStatus" class="filter-select">
+                    <option value="">All Statuses</option>
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <select id="filterUniversity" class="filter-select">
+                    <option value="">All Universities</option>
+                </select>
+                <input type="text" id="searchApplications" class="search-input" placeholder="Search by name, email...">
+                <button class="btn btn-primary" onclick="loadApplications()">Refresh</button>
+            </div>
+
+            <!-- Applications Table -->
+            <div class="table-container">
+                <table class="applications-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>University</th>
+                            <th>Program</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTableBody">
+                        <!-- Applications will be loaded here -->
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 2rem;">
+                                No applications found. Applications submitted through the website will appear here.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- User Registrations -->
+            <div style="margin-top: 3rem;">
+                <h2 style="color: var(--dark-color); margin-bottom: 1.5rem;">Registered Users</h2>
+                <table class="applications-table">
+                    <thead>
+                        <tr>
+                            <th>Registration Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Interested Fields</th>
+                            <th>Interested Universities</th>
+                            <th>Notifications</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 2rem;">
+                                No registered users yet. User registrations will appear here.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusHub Admin</h3>
+                    <p>Administrator Dashboard</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Sample applications data (in production, this would come from a database)
+        let applicationsData = [];
+        let usersData = [];
+
+        // Load applications from localStorage (simulating database)
+        function loadApplications() {
+            const stored = localStorage.getItem('applications');
+            if (stored) {
+                applicationsData = JSON.parse(stored);
+            }
+
+            const storedUsers = localStorage.getItem('registeredUsers');
+            if (storedUsers) {
+                usersData = JSON.parse(storedUsers);
+            }
+
+            displayApplications();
+            displayUsers();
+            updateStats();
+        }
+
+        function displayApplications() {
+            const tbody = document.getElementById('applicationsTableBody');
+            const statusFilter = document.getElementById('filterStatus')?.value || '';
+            const universityFilter = document.getElementById('filterUniversity')?.value || '';
+            const searchQuery = document.getElementById('searchApplications')?.value.toLowerCase() || '';
+
+            let filtered = applicationsData.filter(app => {
+                if (statusFilter && app.status !== statusFilter) return false;
+                if (universityFilter && app.universityId && app.universityId !== parseInt(universityFilter)) return false;
+                if (searchQuery && !app.name.toLowerCase().includes(searchQuery) && !app.email.toLowerCase().includes(searchQuery)) return false;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem;">No applications found.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(app => {
+                const uni = app.universityId ? universitiesData.find(u => u.id === app.universityId) : null;
+                const statusClass = `status-${app.status}`;
+                const displayDate = app.date ? new Date(app.date).toLocaleDateString() : (app.registrationDate ? new Date(app.registrationDate).toLocaleDateString() : '-');
+                return `
+                    <tr>
+                        <td>${displayDate}</td>
+                        <td>${app.name}</td>
+                        <td>${app.email}</td>
+                        <td>${app.phone || '-'}</td>
+                        <td>${uni ? uni.name : (app.subject || '-')}</td>
+                        <td>${app.program || (app.message ? (app.message.length > 50 ? app.message.substring(0, 50) + '...' : app.message) : '-')}</td>
+                        <td><span class="status-badge ${statusClass}">${app.status.charAt(0).toUpperCase() + app.status.slice(1)}</span></td>
+                        <td>
+                            <button class="action-btn btn-view" onclick="viewApplication(${app.id})">View</button>
+                            <button class="action-btn btn-contact" onclick="contactApplicant(${app.id})">Contact</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function displayUsers() {
+            const tbody = document.getElementById('usersTableBody');
+
+            if (usersData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem;">No registered users yet.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = usersData.map(user => {
+                const fields = user.interestedFields ? user.interestedFields.join(', ') : '-';
+                const universities = user.interestedUniversities ? user.interestedUniversities.map(id => {
+                    const uni = universitiesData.find(u => u.id === id);
+                    return uni ? uni.name : '';
+                }).filter(Boolean).join(', ') : '-';
+                return `
+                    <tr>
+                        <td>${new Date(user.registrationDate).toLocaleDateString()}</td>
+                        <td>${user.fullName}</td>
+                        <td>${user.email}</td>
+                        <td>${user.phone || '-'}</td>
+                        <td>${fields}</td>
+                        <td>${universities}</td>
+                        <td>${user.notifications ? 'Yes' : 'No'}</td>
+                        <td>
+                            <button class="action-btn btn-view" onclick="viewUser('${user.email}')">View</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateStats() {
+            document.getElementById('totalApplications').textContent = applicationsData.length;
+            document.getElementById('newApplications').textContent = applicationsData.filter(a => a.status === 'new').length;
+            document.getElementById('totalUsers').textContent = usersData.length;
+            document.getElementById('contacted').textContent = applicationsData.filter(a => a.status === 'contacted').length;
+        }
+
+        function viewApplication(id) {
+            const app = applicationsData.find(a => a.id === id);
+            if (app) {
+                const uni = app.universityId ? universitiesData.find(u => u.id === app.universityId) : null;
+                let details = `Application Details:\n\nName: ${app.name}\nEmail: ${app.email}\nPhone: ${app.phone || 'N/A'}\n`;
+                if (uni) {
+                    details += `University: ${uni.name}\nProgram: ${app.program || 'N/A'}\n`;
+                } else if (app.subject) {
+                    details += `Subject: ${app.subject}\n`;
+                }
+                details += `Message: ${app.message || 'N/A'}`;
+                alert(details);
+            }
+        }
+
+        function contactApplicant(id) {
+            const app = applicationsData.find(a => a.id === id);
+            if (app) {
+                app.status = 'contacted';
+                localStorage.setItem('applications', JSON.stringify(applicationsData));
+                displayApplications();
+                updateStats();
+                alert(`Contacted ${app.name} at ${app.email}`);
+            }
+        }
+
+        function viewUser(email) {
+            const user = usersData.find(u => u.email === email);
+            if (user) {
+                alert(`User Details:\n\nName: ${user.fullName}\nEmail: ${user.email}\nPhone: ${user.phone || 'N/A'}\nInterested Fields: ${user.interestedFields ? user.interestedFields.join(', ') : 'N/A'}\nNotifications: ${user.notifications ? 'Enabled' : 'Disabled'}`);
+            }
+        }
+
+        // Populate university filter
+        document.addEventListener('DOMContentLoaded', function() {
+            const universityFilter = document.getElementById('filterUniversity');
+            if (universityFilter) {
+                universitiesData.forEach(uni => {
+                    const option = document.createElement('option');
+                    option.value = uni.id;
+                    option.textContent = uni.name;
+                    universityFilter.appendChild(option);
+                });
+            }
+
+            // Setup filters
+            document.getElementById('filterStatus')?.addEventListener('change', displayApplications);
+            document.getElementById('filterUniversity')?.addEventListener('change', displayApplications);
+            document.getElementById('searchApplications')?.addEventListener('input', displayApplications);
+
+            loadApplications();
+        });
+    </script>
+</body>
+</html>
+
+

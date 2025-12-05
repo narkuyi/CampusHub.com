@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CampusHub</h1>
+                <p class="tagline">Your Gateway to Higher Education in Kazakhstan</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Universities</a></li>
+                <li><a href="virtual-tour.html">Virtual Tour</a></li>
+                <li><a href="compare.html">Compare</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="register.html" class="active">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="register-section">
+        <div class="container">
+            <div class="register-container">
+                <div class="register-header">
+                    <h1>Create Your Account</h1>
+                    <p>Register to get personalized recommendations and stay updated</p>
+                </div>
+
+                <form id="registrationForm" class="register-form">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interestedFields">Interested Fields of Study</label>
+                        <select id="interestedFields" name="interestedFields" multiple class="multi-select">
+                            <option value="Engineering">Engineering</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Business">Business</option>
+                            <option value="IT">IT & Computer Science</option>
+                            <option value="Law">Law</option>
+                            <option value="Arts">Arts & Humanities</option>
+                            <option value="Science">Natural Sciences</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interestedUniversities">Interested Universities</label>
+                        <select id="interestedUniversities" name="interestedUniversities" multiple class="multi-select">
+                            <!-- Will be populated dynamically -->
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span id="passwordError" style="color: #ff4444; font-size: 0.9rem; display: none;">Passwords do not match.</span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="notifications" name="notifications" checked>
+                            Subscribe to notifications about deadlines, grants, and news
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I agree to the Terms and Conditions *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Register</button>
+                </form>
+
+                <div class="register-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+
+            <!-- Application Form -->
+            <div class="application-section">
+                <div class="application-header">
+                    <h2>Submit Application / Inquiry</h2>
+                    <p>Want to apply to a specific university or program? Submit your inquiry below.</p>
+                </div>
+
+                <form id="applicationForm" class="application-form">
+                    <div class="form-group">
+                        <label for="appUniversity">Select University *</label>
+                        <select id="appUniversity" name="appUniversity" required>
+                            <option value="">Choose a university...</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appProgram">Select Program</label>
+                        <select id="appProgram" name="appProgram">
+                            <option value="">Choose a program...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appMessage">Your Message / Inquiry *</label>
+                        <textarea id="appMessage" name="appMessage" rows="5" required placeholder="Tell us about your interest, questions, or application details..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appContactEmail">Contact Email *</label>
+                        <input type="email" id="appContactEmail" name="appContactEmail" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary btn-large">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusHub</h3>
+                    <p>The Best University Catalog Platform of the Year</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Password validation
+        document.getElementById('confirmPassword').addEventListener('blur', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            const errorSpan = document.getElementById('passwordError');
+            
+            if (password && confirmPassword && password !== confirmPassword) {
+                errorSpan.style.display = 'block';
+                this.style.borderColor = '#ff4444';
+            } else {
+                errorSpan.style.display = 'none';
+                this.style.borderColor = '';
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            const confirmPassword = document.getElementById('confirmPassword');
+            const errorSpan = document.getElementById('passwordError');
+            if (confirmPassword.value && this.value !== confirmPassword.value) {
+                errorSpan.style.display = 'block';
+                confirmPassword.style.borderColor = '#ff4444';
+            } else {
+                errorSpan.style.display = 'none';
+                confirmPassword.style.borderColor = '';
+            }
+        });
+
+        // Form submission handlers
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorSpan = document.getElementById('passwordError');
+            
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                errorSpan.style.display = 'block';
+                document.getElementById('confirmPassword').style.borderColor = '#ff4444';
+                document.getElementById('confirmPassword').focus();
+                return;
+            }
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                interestedFields: Array.from(document.getElementById('interestedFields').selectedOptions).map(opt => opt.value),
+                interestedUniversities: Array.from(document.getElementById('interestedUniversities').selectedOptions).map(opt => parseInt(opt.value)),
+                notifications: document.getElementById('notifications').checked,
+                registrationDate: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            let users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            users.push(formData);
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+            
+            alert('Registration successful! You will receive a confirmation email shortly.');
+            this.reset();
+            errorSpan.style.display = 'none';
+        });
+
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                id: Date.now(),
+                name: document.getElementById('appContactEmail').value.split('@')[0] || 'Anonymous',
+                email: document.getElementById('appContactEmail').value,
+                phone: '',
+                universityId: parseInt(document.getElementById('appUniversity').value),
+                program: document.getElementById('appProgram').value || 'General Inquiry',
+                message: document.getElementById('appMessage').value,
+                status: 'new',
+                date: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            let applications = JSON.parse(localStorage.getItem('applications') || '[]');
+            applications.push(formData);
+            localStorage.setItem('applications', JSON.stringify(applications));
+            
+            alert('Application submitted successfully! We will contact you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
+

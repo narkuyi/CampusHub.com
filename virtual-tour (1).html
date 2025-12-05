@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Campus Tour - CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CampusHub</h1>
+                <p class="tagline">Your Gateway to Higher Education in Kazakhstan</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Universities</a></li>
+                <li><a href="virtual-tour.html" class="active">Virtual Tour</a></li>
+                <li><a href="compare.html">Compare</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Virtual Tour Header -->
+    <section class="tour-header">
+        <div class="container">
+            <h1>Virtual Campus Tour</h1>
+            <p>Explore campuses from anywhere, anytime - 24/7 availability</p>
+            <div class="tour-selector">
+                <label>Select University:</label>
+                <select id="universitySelector" class="tour-select">
+                    <option value="">Choose a university...</option>
+                    <option value="1">Al-Farabi Kazakh National University</option>
+                    <option value="2">Nazarbayev University</option>
+                    <option value="3">Kazakh National Technical University</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Main -->
+    <section class="virtual-tour-section">
+        <div class="container">
+            <div class="tour-layout">
+                <!-- Panorama Viewer -->
+                <div class="panorama-container">
+                    <div id="panoramaViewer" class="panorama-viewer">
+                        <div class="panorama-placeholder">
+                            <p>Select a university to start the virtual tour</p>
+                            <p class="panorama-hint">Use mouse to drag and explore • Click hotspots to navigate</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Controls -->
+                    <div class="panorama-controls">
+                        <button class="control-btn" id="zoomIn">+</button>
+                        <button class="control-btn" id="zoomOut">-</button>
+                        <button class="control-btn" id="fullscreen">⛶</button>
+                        <button class="control-btn" id="resetView">⟲</button>
+                    </div>
+                </div>
+
+                <!-- Tour Sidebar -->
+                <div class="tour-sidebar">
+                    <div class="tour-map">
+                        <h3>Campus Map</h3>
+                        <div id="campusMap" class="campus-map">
+                            <!-- Interactive map with hotspots -->
+                            <div class="map-hotspot" data-location="main-building" style="top: 30%; left: 40%;">🏛️</div>
+                            <div class="map-hotspot" data-location="library" style="top: 50%; left: 60%;">📚</div>
+                            <div class="map-hotspot" data-location="dormitory" style="top: 70%; left: 30%;">🏠</div>
+                            <div class="map-hotspot" data-location="cafeteria" style="top: 45%; left: 50%;">🍽️</div>
+                            <div class="map-hotspot" data-location="sports" style="top: 80%; left: 70%;">⚽</div>
+                        </div>
+                    </div>
+
+                    <div class="tour-locations">
+                        <h3>Locations</h3>
+                        <div class="locations-list">
+                            <div class="location-item active" data-location="main-building">
+                                <span class="location-icon">🏛️</span>
+                                <div>
+                                    <strong>Main Building</strong>
+                                    <p>Administrative offices and classrooms</p>
+                                </div>
+                            </div>
+                            <div class="location-item" data-location="library">
+                                <span class="location-icon">📚</span>
+                                <div>
+                                    <strong>Library</strong>
+                                    <p>Study spaces and research resources</p>
+                                </div>
+                            </div>
+                            <div class="location-item" data-location="dormitory">
+                                <span class="location-icon">🏠</span>
+                                <div>
+                                    <strong>Student Dormitories</strong>
+                                    <p>Comfortable accommodation options</p>
+                                </div>
+                            </div>
+                            <div class="location-item" data-location="cafeteria">
+                                <span class="location-icon">🍽️</span>
+                                <div>
+                                    <strong>Cafeteria</strong>
+                                    <p>Dining and social spaces</p>
+                                </div>
+                            </div>
+                            <div class="location-item" data-location="sports">
+                                <span class="location-icon">⚽</span>
+                                <div>
+                                    <strong>Sports Complex</strong>
+                                    <p>Fitness and recreational facilities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tour-media">
+                        <h3>Media Gallery</h3>
+                        <div class="media-gallery">
+                            <div class="media-item">
+                                <div class="media-thumbnail">📹</div>
+                                <p>Student Stories</p>
+                            </div>
+                            <div class="media-item">
+                                <div class="media-thumbnail">🎓</div>
+                                <p>Professor Interviews</p>
+                            </div>
+                            <div class="media-item">
+                                <div class="media-thumbnail">📸</div>
+                                <p>Campus Photos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusHub</h3>
+                    <p>The Best University Catalog Platform of the Year</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Virtual tour functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const locationItems = document.querySelectorAll('.location-item');
+            const mapHotspots = document.querySelectorAll('.map-hotspot');
+            
+            locationItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const location = this.dataset.location;
+                    locationItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    loadPanorama(location);
+                });
+            });
+
+            mapHotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', function() {
+                    const location = this.dataset.location;
+                    locationItems.forEach(i => {
+                        i.classList.remove('active');
+                        if (i.dataset.location === location) {
+                            i.classList.add('active');
+                        }
+                    });
+                    loadPanorama(location);
+                });
+            });
+
+            function loadPanorama(location) {
+                const viewer = document.getElementById('panoramaViewer');
+                viewer.innerHTML = `
+                    <div class="panorama-content">
+                        <div class="panorama-image" style="background: linear-gradient(135deg, #69FFB7 0%, #C0C4FF 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                            360° View of ${location.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            <p style="font-size: 14px; margin-top: 20px;">Drag to explore • Click hotspots to navigate</p>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
+
+

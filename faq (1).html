@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CampusHub</h1>
+                <p class="tagline">Your Gateway to Higher Education in Kazakhstan</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Universities</a></li>
+                <li><a href="virtual-tour.html">Virtual Tour</a></li>
+                <li><a href="compare.html">Compare</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- FAQ Header -->
+    <section class="faq-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about admission, UNT, documents, and universities</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-categories">
+                <button class="faq-category-btn active" data-category="all">All Questions</button>
+                <button class="faq-category-btn" data-category="admission">Admission</button>
+                <button class="faq-category-btn" data-category="unt">UNT</button>
+                <button class="faq-category-btn" data-category="documents">Documents</button>
+                <button class="faq-category-btn" data-category="universities">Universities</button>
+                <button class="faq-category-btn" data-category="scholarships">Scholarships</button>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item" data-category="admission">
+                    <div class="faq-question">
+                        <h3>What are the admission requirements for universities in Kazakhstan?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Admission requirements vary by university and program, but generally include:</p>
+                        <ul>
+                            <li>UNT (Unified National Test) certificate</li>
+                            <li>High school diploma</li>
+                            <li>Medical certificate</li>
+                            <li>Identity document</li>
+                            <li>Photos</li>
+                        </ul>
+                        <p>Some programs may require additional entrance exams or interviews.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="unt">
+                    <div class="faq-question">
+                        <h3>What is UNT and when is it conducted?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>UNT (Unified National Test) is a standardized test required for admission to most universities in Kazakhstan. It is typically conducted in June each year. Registration usually opens in March-April. The test covers subjects based on your chosen field of study.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="documents">
+                    <div class="faq-question">
+                        <h3>What documents do I need to prepare for admission?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Required documents typically include:</p>
+                        <ul>
+                            <li>UNT certificate (original)</li>
+                            <li>High school diploma (original and copy)</li>
+                            <li>Medical certificate (form 086-U)</li>
+                            <li>Identity document (ID card or passport)</li>
+                            <li>4 photos (3x4 cm)</li>
+                            <li>Application form</li>
+                        </ul>
+                        <p>Some universities may require additional documents, so check with your chosen institution.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="scholarships">
+                    <div class="faq-question">
+                        <h3>How can I get a scholarship or grant?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>There are several types of scholarships available:</p>
+                        <ul>
+                            <li><strong>State Educational Grants:</strong> Awarded based on UNT scores</li>
+                            <li><strong>University Scholarships:</strong> Merit-based scholarships offered by individual universities</li>
+                            <li><strong>Need-based Financial Aid:</strong> For students with financial difficulties</li>
+                            <li><strong>International Scholarships:</strong> For international students</li>
+                        </ul>
+                        <p>Check with your university's financial aid office for specific requirements and deadlines.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="universities">
+                    <div class="faq-question">
+                        <h3>What is the difference between public and private universities?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Public Universities:</strong> Funded by the state, generally lower tuition fees, more traditional programs, state grants available.</p>
+                        <p><strong>Private Universities:</strong> Privately funded, may have higher tuition fees, often more specialized programs, modern facilities, fewer state grants but may offer their own scholarships.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="admission">
+                    <div class="faq-question">
+                        <h3>Can I apply to multiple universities?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can apply to multiple universities and programs. However, each application may require separate documents and fees. Make sure to check deadlines for each institution.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="unt">
+                    <div class="faq-question">
+                        <h3>What subjects are tested in UNT?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>UNT typically includes:</p>
+                        <ul>
+                            <li>Kazakh/Russian language (mandatory)</li>
+                            <li>History of Kazakhstan (mandatory)</li>
+                            <li>Mathematics (mandatory)</li>
+                            <li>Two profile subjects based on your field of study</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="universities">
+                    <div class="faq-question">
+                        <h3>Do universities provide accommodation?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most universities offer dormitory accommodation for students, especially those from other cities. Availability and conditions vary by university. Some universities have modern dormitories with various amenities, while others may have more basic facilities. Contact the university's accommodation office for details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusHub</h3>
+                    <p>The Best University Catalog Platform of the Year</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const toggle = this.querySelector('.faq-toggle');
+                
+                const isOpen = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    if (faq !== item) {
+                        faq.classList.remove('active');
+                        faq.querySelector('.faq-toggle').textContent = '+';
+                    }
+                });
+                
+                // Toggle current item
+                if (isOpen) {
+                    item.classList.remove('active');
+                    toggle.textContent = '+';
+                } else {
+                    item.classList.add('active');
+                    toggle.textContent = '−';
+                }
+            });
+        });
+
+        // FAQ category filter
+        document.querySelectorAll('.faq-category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                document.querySelectorAll('.faq-category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
